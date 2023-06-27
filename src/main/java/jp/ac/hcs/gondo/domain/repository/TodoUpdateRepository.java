@@ -4,6 +4,6 @@ import jp.ac.hcs.gondo.domain.dto.TodoData;
 
 public interface TodoUpdateRepository {
 
-	int start(TodoData data);
+	int update(TodoData data);
 	
 }

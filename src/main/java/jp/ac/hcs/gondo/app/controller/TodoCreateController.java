@@ -1,5 +1,7 @@
 package jp.ac.hcs.gondo.app.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import jp.ac.hcs.gondo.domain.service.TodoService;
 public class TodoCreateController {
 
 	@Autowired
-	private TodoService service;
+	private Map<String, TodoService> service;
 	
 	private static final String MODEL_NAME = "response";
 	
@@ -24,10 +26,9 @@ public class TodoCreateController {
 		return "apply/input";
 	}
 	
-	
 	@PostMapping("/create")
 	public String postApply(@ModelAttribute Request request, Model model) {
-		Response response = service.execute(request);
+		Response response = service.get("TodoCreateService").execute(request);
 		model.addAttribute(MODEL_NAME, response);
 		return "index";
 	}

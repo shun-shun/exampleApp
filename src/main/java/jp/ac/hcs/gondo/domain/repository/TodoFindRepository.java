@@ -1,12 +1,10 @@
 package jp.ac.hcs.gondo.domain.repository;
 
-import java.util.List;
-
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 
-public interface TodoSelectRepository {
-
-	List<Todo> select(TodoData data);
+public interface TodoFindRepository {
+	
+	Todo find(TodoData data);
 	
 }
