@@ -20,7 +20,7 @@ public class SelectUserIdReposotiyImpl extends SelectRepository {
 	@Override
 	protected Map<String, Object> createParams(TodoData todoData) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("userid", todoData.getUserId());
+		params.put("userId", todoData.getUserId());
 		return params;
 	}
 }

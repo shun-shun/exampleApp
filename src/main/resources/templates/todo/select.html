@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
+	
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+	
+	<body>
+	
+		<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+					<div class="row justify-content-md-center">
+						<div class="col-md-10">
+						
+							<form method="post" th:action="@{/bmi}">
+								<div class="input-group">
+									<input type="text" class="form-control" name="cm"> 
+									<span class="input-group-btn">
+										<button type="submit" class="btn btn-success mx-auto btnx-lime-non">検索</button>
+									</span>
+								</div>
+							</form>
+							<br>
+							<table class="table table-responsive">
+								<thead>
+									<tr>
+										<th  scope="col">No.</th>
+										<th style="width: 60%" scope="col">タスク</th>
+										<th style="width: 20%" scope="col">期限日</th>
+										<th style="width: 10%" scope="col"></th>
+										<th style="width: 10%" scope="col"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="task, stat : ${response}">
+										<td th:text="${stat.count}">1</td>
+										<td th:text="${task.title}">タイトル</td>
+										<td th:text="${task.limitDay}">2020/11/11</td>
+										<td>
+											<form method="post" th:action="@{/task/delete}">
+												<input type="hidden" th:value="${task.id}" name="id" id="delete">
+												<button type="submit" class="btn btn-danger">削除</button>
+											</form>
+										</td>
+										<td>
+											<form method="post" th:action="@{/task/complate}" th:if="${!task.complate}">
+												<input type="hidden" th:value="${task.id}" name="id" id="complate">
+												<button type="submit" class="btn btn-primary">完了</button>
+											</form>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+	</body>
+</html>
+
