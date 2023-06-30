@@ -8,5 +8,5 @@ import jp.ac.hcs.gondo.app.response.Response;
 public interface TodoListService {
 
 	List<Response> execute(Request request);
-	
+
 }
