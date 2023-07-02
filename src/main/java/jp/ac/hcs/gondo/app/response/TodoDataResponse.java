@@ -3,7 +3,7 @@ package jp.ac.hcs.gondo.app.response;
 import lombok.Data;
 
 @Data
-public class TodoListResponse extends Response {
+public class TodoDataResponse extends Response {
 
 	private String id;
 
@@ -14,5 +14,5 @@ public class TodoListResponse extends Response {
 	private String limitDay;
 
 	private String complate;
-
+	
 }

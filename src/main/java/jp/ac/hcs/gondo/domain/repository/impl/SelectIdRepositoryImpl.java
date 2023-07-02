@@ -1,5 +1,6 @@
 package jp.ac.hcs.gondo.domain.repository.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -7,19 +8,20 @@ import org.springframework.stereotype.Repository;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.repository.FindRepository;
 
-@Repository("SelectUserIdReposotiyImpl")
+@Repository("SelectIdRepositoryImpl")
 public class SelectIdRepositoryImpl extends FindRepository {
 
 	@Override
 	protected String createSql() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		String sql = "SELECT * FROM t_task WHERE id = :id ORDER BY id";
+		return sql;
 	}
 
 	@Override
 	protected Map<String, Object> createParams(TodoData todoData) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		Map<String, Object> params = new HashMap<>();
+		params.put("id", todoData.getId());
+		return params;
 	}
 
 }

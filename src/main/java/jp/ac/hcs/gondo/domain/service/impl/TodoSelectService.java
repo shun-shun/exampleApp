@@ -11,7 +11,7 @@ import jp.ac.hcs.gondo.app.common.SecurityUtil;
 import jp.ac.hcs.gondo.app.request.Request;
 import jp.ac.hcs.gondo.app.request.TodoSelectRequest;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.app.response.TodoListResponse;
+import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.TodoSelectRepository;
@@ -45,7 +45,7 @@ public class TodoSelectService implements TodoListService {
 	private List<Response> modeling(List<Todo> todos) {
 		List<Response> responseList = new ArrayList<>();
 		for (Todo todo : todos) {
-			TodoListResponse response = new TodoListResponse();
+			TodoDataResponse response = new TodoDataResponse();
 			response.setId(String.valueOf(todo.getId()));
 			response.setUserId(todo.getUserId());
 			response.setTitle(todo.getTitle());

@@ -1,17 +1,14 @@
 package jp.ac.hcs.gondo.domain.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.ac.hcs.gondo.app.common.SecurityUtil;
 import jp.ac.hcs.gondo.app.request.Request;
-import jp.ac.hcs.gondo.app.request.TodoSelectRequest;
+import jp.ac.hcs.gondo.app.request.TodoFindRequest;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.app.response.TodoListResponse;
+import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.TodoFindRepository;
@@ -26,34 +23,29 @@ public class TodoFindService implements TodoService {
 	@Override
 	public Response execute(Request request) {
 		TodoData todoData = modeling(request);
-		Todo todoList = repository.get("SelectUserIdReposotiyImpl").find(todoData);
+		Todo todoList = repository.get("SelectIdRepositoryImpl").find(todoData);
 		Response response = modeling(todoList);
 		return response;
 	}
 
 	private TodoData modeling(Request request) {
-		if (!(request instanceof TodoSelectRequest)) {
+		if (!(request instanceof TodoFindRequest)) {
 			throw new IllegalArgumentException();
 		}
-		TodoSelectRequest selectRequest = (TodoSelectRequest) request;
+		TodoFindRequest findRequest = (TodoFindRequest) request;
 		TodoData todoData = new TodoData();
-		// TODO パラメータ増やす
-		todoData.setUserId(SecurityUtil.getUsername());
+		todoData.setId(Integer.parseInt(findRequest.getId()));
 		return todoData;
 	}
 
-	private Response modeling(List<Todo> todos) {
-		List<Response> responseList = new ArrayList<>();
-		for (Todo todo : todos) {
-			TodoListResponse response = new TodoListResponse();
-			response.setId(String.valueOf(todo.getId()));
-			response.setUserId(todo.getUserId());
-			response.setTitle(todo.getTitle());
-			response.setLimitDay(todo.getLimitDay().toString());
-			response.setComplate(Boolean.toString(todo.isComplate()));
-			responseList.add(response);
-		}
-		return responseList;
+	private Response modeling(Todo todo) {
+		TodoDataResponse response = new TodoDataResponse();
+		response.setId(String.valueOf(todo.getId()));
+		response.setUserId(todo.getUserId());
+		response.setTitle(todo.getTitle());
+		response.setLimitDay(todo.getLimitDay().toString());
+		response.setComplate(Boolean.toString(todo.isComplate()));
+		return response;
 	}
 
 }
