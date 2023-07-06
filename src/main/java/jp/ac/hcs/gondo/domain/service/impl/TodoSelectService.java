@@ -14,14 +14,14 @@ import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
-import jp.ac.hcs.gondo.domain.repository.TodoSelectRepository;
+import jp.ac.hcs.gondo.domain.repository.SelectRepository;
 import jp.ac.hcs.gondo.domain.service.TodoListService;
 
 @Service("TodoSelectService")
 public class TodoSelectService implements TodoListService {
 
 	@Autowired
-	private Map<String, TodoSelectRepository> repository;
+	private Map<String, SelectRepository> repository;
 
 	@Override
 	public List<Response> execute(Request request) {

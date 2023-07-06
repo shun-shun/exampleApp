@@ -15,19 +15,20 @@
 				<nav th:replace= "~{common :: common-sidebar}"></nav>
 				
 		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+		      		<h3>TODO検索</h3>
 					<div class="row justify-content-md-center">
 						<div class="col-md-10">
 						
-							<form method="post" th:action="@{/bmi}">
+							<form method="post" th:action="@{/search}">
 								<div class="input-group">
-									<input type="text" class="form-control" name="cm"> 
+									<input type="text" class="form-control" name="userId"> 
 									<span class="input-group-btn">
 										<button type="submit" class="btn btn-success mx-auto btnx-lime-non">検索</button>
 									</span>
 								</div>
 							</form>
 							<br>
-							<table class="table table-responsive">
+							<table class="table table-responsive" th:if="${response}")>
 								<thead>
 									<tr>
 										<th  scope="col">No.</th>

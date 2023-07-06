@@ -6,10 +6,10 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import jp.ac.hcs.gondo.domain.dto.TodoData;
-import jp.ac.hcs.gondo.domain.repository.SelectRepository;
+import jp.ac.hcs.gondo.domain.repository.BaseSelectRepository;
 
 @Repository("SelectUserIdReposotiyImpl")
-public class SelectUserIdReposotiyImpl extends SelectRepository {
+public class SelectUserIdReposotiyImpl extends BaseSelectRepository {
 
 	@Override
 	protected String createSql() {

@@ -11,14 +11,14 @@ import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
-import jp.ac.hcs.gondo.domain.repository.TodoFindRepository;
+import jp.ac.hcs.gondo.domain.repository.FindRepository;
 import jp.ac.hcs.gondo.domain.service.TodoService;
 
 @Service("TodoFindService")
 public class TodoFindService implements TodoService {
 
 	@Autowired
-	private Map<String, TodoFindRepository> repository;
+	private Map<String, FindRepository> repository;
 
 	@Override
 	public Response execute(Request request) {
