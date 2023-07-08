@@ -44,13 +44,13 @@
 										<td th:text="${task.title}">タイトル</td>
 										<td th:text="${task.limitDay}">2020/11/11</td>
 										<td>
-											<form method="post" th:action="@{/task/delete}">
+											<form method="post" th:action="@{/delete}">
 												<input type="hidden" th:value="${task.id}" name="id" id="delete">
 												<button type="submit" class="btn btn-danger">削除</button>
 											</form>
 										</td>
 										<td>
-											<form method="post" th:action="@{/task/complete}" th:if="${!task.complete}">
+											<form method="post" th:action="@{/update}" th:if="${!task.complete}">
 												<input type="hidden" th:value="${task.id}" name="id" id="complete">
 												<button type="submit" class="btn btn-primary">完了</button>
 											</form>
