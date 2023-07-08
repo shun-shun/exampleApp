@@ -8,14 +8,12 @@ import org.springframework.stereotype.Repository;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.repository.base.BaseSelectRepository;
 
-@Repository("SelectUserIdAndQueryReposotiyImpl")
-public class SelectUserIdAndQueryReposotiyImpl extends BaseSelectRepository {
+@Repository("SelectUserIdRepositoryImpl")
+public class SelectUserIdRepositoryImpl extends BaseSelectRepository {
 
-	private static final String LIKE = "%";
-	
 	@Override
 	protected String createSql() {
-		String sql = "SELECT * FROM t_task WHERE user_id = :userId AND title LIKE :query";
+		String sql = "SELECT * FROM t_task WHERE user_id = :userId";
 		return sql;
 	}
 
@@ -23,7 +21,7 @@ public class SelectUserIdAndQueryReposotiyImpl extends BaseSelectRepository {
 	protected Map<String, Object> createParams(TodoData todoData) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", todoData.getUserId());
-		params.put("query", LIKE + todoData.getQuery() + LIKE);
 		return params;
 	}
+
 }

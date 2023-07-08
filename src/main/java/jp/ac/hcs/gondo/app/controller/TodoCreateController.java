@@ -31,6 +31,6 @@ public class TodoCreateController {
 	public String postApply(@Validated TodoCreatePostRequest request, Model model) {
 		Response response = service.get("TodoCreateService").execute(request);
 		model.addAttribute(MODEL_NAME, response);
-		return "redirect:/search";
+		return "redirect:/";
 	}
 }

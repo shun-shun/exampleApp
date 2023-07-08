@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import jp.ac.hcs.gondo.app.common.SecurityUtil;
 import jp.ac.hcs.gondo.app.request.Request;
-import jp.ac.hcs.gondo.app.request.TodoSearchPostRequest;
 import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.app.response.TodoSearchPostResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
@@ -17,8 +16,8 @@ import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.SelectRepository;
 import jp.ac.hcs.gondo.domain.service.ListService;
 
-@Service("TodoSelectService")
-public class TodoSelectService implements ListService {
+@Service("TodoSelectAllService")
+public class TodoSelectAllService implements ListService {
 
 	@Autowired
 	private Map<String, SelectRepository> repository;
@@ -26,19 +25,13 @@ public class TodoSelectService implements ListService {
 	@Override
 	public List<Response> execute(Request request) {
 		TodoData todoData = modeling(request);
-		List<Todo> todoList = repository.get("SelectUserIdReposotiyImpl").select(todoData);
+		List<Todo> todoList = repository.get("SelectUserIdRepositoryImpl").select(todoData);
 		List<Response> response = modeling(todoList);
 		return response;
 	}
 
 	private TodoData modeling(Request request) {
-		if (!(request instanceof TodoSearchPostRequest)) {
-			throw new IllegalArgumentException();
-		}
-		
-		TodoSearchPostRequest selectRequest = (TodoSearchPostRequest) request;
 		TodoData todoData = new TodoData();
-		todoData.setQuery(selectRequest.getQuery());
 		todoData.setUserId(SecurityUtil.getUsername());
 		return todoData;
 	}
