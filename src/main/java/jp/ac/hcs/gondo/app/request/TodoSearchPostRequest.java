@@ -3,7 +3,7 @@ package jp.ac.hcs.gondo.app.request;
 import lombok.Data;
 
 @Data
-public class TodoSelectRequest extends Request {
+public class TodoSearchPostRequest extends Request {
 
 	private String userId;
 	

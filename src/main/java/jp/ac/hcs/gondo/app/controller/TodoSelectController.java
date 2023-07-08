@@ -11,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import jp.ac.hcs.gondo.app.request.TodoSelectRequest;
+import jp.ac.hcs.gondo.app.request.TodoSearchPostRequest;
 import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.domain.service.ListService;
 
@@ -29,7 +29,7 @@ public class TodoSelectController {
 	}
 	
 	@PostMapping("/search")
-	public String postSearch(@Validated TodoSelectRequest request, Principal principal, Model model) {
+	public String postSearch(@Validated TodoSearchPostRequest request, Principal principal, Model model) {
 		List<Response> response = service.get("TodoSelectService").execute(request);
 		model.addAttribute(MODEL_NAME, response);
 		return "todo/search";

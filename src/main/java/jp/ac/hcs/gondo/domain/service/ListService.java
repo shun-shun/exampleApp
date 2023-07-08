@@ -8,5 +8,5 @@ import jp.ac.hcs.gondo.app.response.Response;
 public interface ListService {
 
 	List<Response> execute(Request request);
-
+	
 }

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import jp.ac.hcs.gondo.app.common.SecurityUtil;
 import jp.ac.hcs.gondo.app.request.Request;
-import jp.ac.hcs.gondo.app.request.TodoSelectRequest;
+import jp.ac.hcs.gondo.app.request.TodoSearchPostRequest;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.app.response.TodoDataResponse;
+import jp.ac.hcs.gondo.app.response.TodoSearchPostResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.SelectRepository;
@@ -32,11 +32,11 @@ public class TodoSelectService implements ListService {
 	}
 
 	private TodoData modeling(Request request) {
-		if (!(request instanceof TodoSelectRequest)) {
+		if (!(request instanceof TodoSearchPostRequest)) {
 			throw new IllegalArgumentException();
 		}
 		
-		TodoSelectRequest selectRequest = (TodoSelectRequest) request;
+		TodoSearchPostRequest selectRequest = (TodoSearchPostRequest) request;
 		TodoData todoData = new TodoData();
 		todoData.setQuery(selectRequest.getQuery());
 		todoData.setUserId(SecurityUtil.getUsername());
@@ -46,7 +46,7 @@ public class TodoSelectService implements ListService {
 	private List<Response> modeling(List<Todo> todos) {
 		List<Response> responseList = new ArrayList<>();
 		for (Todo todo : todos) {
-			TodoDataResponse response = new TodoDataResponse();
+			TodoSearchPostResponse response = new TodoSearchPostResponse();
 			response.setId(String.valueOf(todo.getId()));
 			response.setUserId(todo.getUserId());
 			response.setTitle(todo.getTitle());
@@ -56,5 +56,4 @@ public class TodoSelectService implements ListService {
 		}
 		return responseList;
 	}
-
 }

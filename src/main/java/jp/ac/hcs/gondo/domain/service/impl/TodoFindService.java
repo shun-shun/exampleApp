@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import jp.ac.hcs.gondo.app.request.Request;
 import jp.ac.hcs.gondo.app.request.TodoFindRequest;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.app.response.TodoDataResponse;
+import jp.ac.hcs.gondo.app.response.TodoSearchPostResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.FindRepository;
@@ -39,7 +39,7 @@ public class TodoFindService implements FindService {
 	}
 
 	private Response modeling(Todo todo) {
-		TodoDataResponse response = new TodoDataResponse();
+		TodoSearchPostResponse response = new TodoSearchPostResponse();
 		response.setId(String.valueOf(todo.getId()));
 		response.setUserId(todo.getUserId());
 		response.setTitle(todo.getTitle());
