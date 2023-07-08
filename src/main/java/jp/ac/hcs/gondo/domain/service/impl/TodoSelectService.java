@@ -15,10 +15,10 @@ import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.SelectRepository;
-import jp.ac.hcs.gondo.domain.service.TodoListService;
+import jp.ac.hcs.gondo.domain.service.ListService;
 
 @Service("TodoSelectService")
-public class TodoSelectService implements TodoListService {
+public class TodoSelectService implements ListService {
 
 	@Autowired
 	private Map<String, SelectRepository> repository;
@@ -35,9 +35,10 @@ public class TodoSelectService implements TodoListService {
 		if (!(request instanceof TodoSelectRequest)) {
 			throw new IllegalArgumentException();
 		}
+		
 		TodoSelectRequest selectRequest = (TodoSelectRequest) request;
 		TodoData todoData = new TodoData();
-		// TODO パラメータ増やす
+		todoData.setQuery(selectRequest.getQuery());
 		todoData.setUserId(SecurityUtil.getUsername());
 		return todoData;
 	}

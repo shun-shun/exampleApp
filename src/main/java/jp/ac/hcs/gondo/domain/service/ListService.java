@@ -1,10 +1,12 @@
 package jp.ac.hcs.gondo.domain.service;
 
+import java.util.List;
+
 import jp.ac.hcs.gondo.app.request.Request;
 import jp.ac.hcs.gondo.app.response.Response;
 
-public interface TodoService {
+public interface ListService {
 
-	Response execute(Request request);
-	
+	List<Response> execute(Request request);
+
 }

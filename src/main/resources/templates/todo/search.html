@@ -21,14 +21,14 @@
 						
 							<form method="post" th:action="@{/search}">
 								<div class="input-group">
-									<input type="text" class="form-control" name="userId"> 
+									<input type="text" class="form-control" name="query"> 
 									<span class="input-group-btn">
 										<button type="submit" class="btn btn-success mx-auto btnx-lime-non">検索</button>
 									</span>
 								</div>
 							</form>
 							<br>
-							<table class="table table-responsive" th:if="${response}")>
+							<table class="table table-responsive" th:if="${response}">
 								<thead>
 									<tr>
 										<th  scope="col">No.</th>

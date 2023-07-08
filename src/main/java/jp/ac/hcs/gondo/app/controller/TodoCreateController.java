@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jp.ac.hcs.gondo.app.request.Request;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.domain.service.TodoService;
+import jp.ac.hcs.gondo.domain.service.FindService;
 
 @Controller
 public class TodoCreateController {
 
 	@Autowired
-	private Map<String, TodoService> service;
+	private Map<String, FindService> service;
 	
 	private static final String MODEL_NAME = "response";
 	

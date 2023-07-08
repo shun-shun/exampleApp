@@ -4,10 +4,10 @@ import org.springframework.stereotype.Service;
 
 import jp.ac.hcs.gondo.app.request.Request;
 import jp.ac.hcs.gondo.app.response.Response;
-import jp.ac.hcs.gondo.domain.service.TodoService;
+import jp.ac.hcs.gondo.domain.service.FindService;
 
 @Service("TodoUpdateService")
-public class TodoUpdateService implements TodoService {
+public class TodoUpdateService implements FindService {
 
 	@Override
 	public Response execute(Request request) {

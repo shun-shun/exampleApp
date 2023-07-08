@@ -6,5 +6,7 @@ import lombok.Data;
 public class TodoSelectRequest extends Request {
 
 	private String userId;
+	
+	private String query;
 
 }

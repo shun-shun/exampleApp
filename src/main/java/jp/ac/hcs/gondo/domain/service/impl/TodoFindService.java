@@ -12,10 +12,10 @@ import jp.ac.hcs.gondo.app.response.TodoDataResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
 import jp.ac.hcs.gondo.domain.repository.FindRepository;
-import jp.ac.hcs.gondo.domain.service.TodoService;
+import jp.ac.hcs.gondo.domain.service.FindService;
 
 @Service("TodoFindService")
-public class TodoFindService implements TodoService {
+public class TodoFindService implements FindService {
 
 	@Autowired
 	private Map<String, FindRepository> repository;

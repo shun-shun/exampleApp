@@ -1,4 +1,4 @@
-package jp.ac.hcs.gondo.domain.repository.impl;
+package jp.ac.hcs.gondo.domain.repository.base.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import jp.ac.hcs.gondo.domain.dto.TodoData;
-import jp.ac.hcs.gondo.domain.repository.BaseFindRepository;
+import jp.ac.hcs.gondo.domain.repository.base.BaseFindRepository;
 
 @Repository("SelectIdRepositoryImpl")
 public class SelectIdRepositoryImpl extends BaseFindRepository {

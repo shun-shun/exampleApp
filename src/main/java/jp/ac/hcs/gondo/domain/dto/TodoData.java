@@ -16,4 +16,6 @@ public class TodoData {
 	private Date limitDay;
 	
 	private boolean complate;
+	
+	private String query;
 }

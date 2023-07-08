@@ -1,4 +1,4 @@
-package jp.ac.hcs.gondo.domain.repository;
+package jp.ac.hcs.gondo.domain.repository.base;
 
 import java.util.Date;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import jp.ac.hcs.gondo.domain.dto.TodoData;
 import jp.ac.hcs.gondo.domain.entity.Todo;
+import jp.ac.hcs.gondo.domain.repository.FindRepository;
 
 public abstract class BaseFindRepository implements FindRepository{
 	
