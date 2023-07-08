@@ -38,7 +38,7 @@ public abstract class BaseSelectRepository implements SelectRepository {
 			todo.setUserId((String) record.get("user_id"));
 			todo.setTitle((String) record.get("title"));
 			todo.setLimitDay((Date) record.get("limit_day"));
-			todo.setComplate((boolean) record.get("complate"));
+			todo.setComplete((boolean) record.get("complete"));
 			todos.add(todo);
 		}
 		return todos;

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.ac.hcs.gondo.app.request.Request;
-import jp.ac.hcs.gondo.app.request.TodoFindRequest;
+import jp.ac.hcs.gondo.app.request.TodoDetailRequest;
 import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.app.response.TodoSearchPostResponse;
 import jp.ac.hcs.gondo.domain.dto.TodoData;
@@ -29,10 +29,10 @@ public class TodoFindService implements FindService {
 	}
 
 	private TodoData modeling(Request request) {
-		if (!(request instanceof TodoFindRequest)) {
+		if (!(request instanceof TodoDetailRequest)) {
 			throw new IllegalArgumentException();
 		}
-		TodoFindRequest findRequest = (TodoFindRequest) request;
+		TodoDetailRequest findRequest = (TodoDetailRequest) request;
 		TodoData todoData = new TodoData();
 		todoData.setId(Integer.parseInt(findRequest.getId()));
 		return todoData;
@@ -44,7 +44,7 @@ public class TodoFindService implements FindService {
 		response.setUserId(todo.getUserId());
 		response.setTitle(todo.getTitle());
 		response.setLimitDay(todo.getLimitDay().toString());
-		response.setComplate(Boolean.toString(todo.isComplate()));
+		response.setComplete(Boolean.toString(todo.isComplete()));
 		return response;
 	}
 

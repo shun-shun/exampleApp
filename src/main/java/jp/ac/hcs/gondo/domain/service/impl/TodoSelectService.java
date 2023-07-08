@@ -51,7 +51,7 @@ public class TodoSelectService implements ListService {
 			response.setUserId(todo.getUserId());
 			response.setTitle(todo.getTitle());
 			response.setLimitDay(todo.getLimitDay().toString());
-			response.setComplate(Boolean.toString(todo.isComplate()));
+			response.setComplete(Boolean.toString(todo.isComplete()));
 			responseList.add(response);
 		}
 		return responseList;

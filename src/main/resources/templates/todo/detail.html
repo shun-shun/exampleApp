@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+	<div th:replace="~{common :: common-script}"></div>
+	<div th:replace="~{common :: common-head}"></div>
+	
+	<script th:src="@{/js/search.js}" src="../static/js/search.js"></script>
+	
+	<body>
+	
+		<div th:replace="~{common :: common-nav}"></div>
+		<div class="container-fluid header-up">
+			<div class="row">
+				<nav th:replace= "~{common :: common-sidebar}"></nav>
+				
+		      	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+		      		<h3>TODO詳細</h3>
+					<div class="row justify-content-md-center">
+						<div class="col-md-10">
+						
+							<table class="table table-responsive" th:if="${response}">
+								<thead>
+									<tr>
+										<th  scope="col">No.</th>
+										<th style="width: 60%" scope="col">タスク</th>
+										<th style="width: 20%" scope="col">期限日</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="task : ${response}" th:object="${task}">
+										<td th:text="*{id}" name="id">1</td>
+										<td th:text="*{title}">タイトル</td>
+										<td th:text="*{limitDay}">2020/11/11</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</main>
+			</div>	
+		</div>
+	</body>
+</html>
+

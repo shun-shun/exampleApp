@@ -13,6 +13,6 @@ public class TodoSearchPostResponse extends Response {
 
 	private String limitDay;
 
-	private String complate;
+	private String complete;
 	
 }

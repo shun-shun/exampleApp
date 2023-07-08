@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS t_task (
   user_id VARCHAR(50),
   title VARCHAR(50),
   limit_day DATE,
-  complate BOOLEAN
+  complete BOOLEAN
 );

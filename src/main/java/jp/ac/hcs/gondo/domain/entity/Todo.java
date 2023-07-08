@@ -15,6 +15,6 @@ public class Todo {
 	
 	private Date limitDay;
 	
-	private boolean complate;
+	private boolean complete;
 	
 }

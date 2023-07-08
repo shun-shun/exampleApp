@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-	<link rel="stylesheet" th:href="@{/css/dojo.css}" href="../static/css/dojo.css">
-	
 	<div th:replace="~{common :: common-script}"></div>
 	<div th:replace="~{common :: common-head}"></div>
+	
+	<script th:src="@{/js/search.js}" src="../static/js/search.js"></script>
 	
 	<body>
 	
@@ -39,8 +39,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="task, stat : ${response}">
-										<td th:text="${stat.count}">1</td>
+									<tr th:each="task : ${response}" class="click">
+										<td th:text="${task.id}" name="id">1</td>
 										<td th:text="${task.title}">タイトル</td>
 										<td th:text="${task.limitDay}">2020/11/11</td>
 										<td>
@@ -50,8 +50,8 @@
 											</form>
 										</td>
 										<td>
-											<form method="post" th:action="@{/task/complate}" th:if="${!task.complate}">
-												<input type="hidden" th:value="${task.id}" name="id" id="complate">
+											<form method="post" th:action="@{/task/complete}" th:if="${!task.complete}">
+												<input type="hidden" th:value="${task.id}" name="id" id="complete">
 												<button type="submit" class="btn btn-primary">完了</button>
 											</form>
 										</td>

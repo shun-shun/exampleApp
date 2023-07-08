@@ -36,7 +36,7 @@ public abstract class BaseFindRepository implements FindRepository{
 			todo.setUserId((String)record.get("user_id"));
 			todo.setTitle((String)record.get("title"));
 			todo.setLimitDay((Date)record.get("limit_day"));
-			todo.setComplate((boolean)record.get("complete"));
+			todo.setComplete((boolean)record.get("complete"));
 		}
 		return todo;
 	}
