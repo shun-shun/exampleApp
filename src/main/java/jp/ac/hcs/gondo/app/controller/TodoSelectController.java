@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +33,11 @@ public class TodoSelectController {
 	}
 	
 	@PostMapping("/search")
-	public String postSearch(@Validated TodoSearchPostRequest request, Principal principal, Model model) {
+	public String postSearch(@Validated TodoSearchPostRequest request, BindingResult result, Principal principal, Model model) {
+		if(result.hasErrors()) {
+			return getDashboard(model);
+		}
+		
 		List<Response> response = service.get("TodoSearchService").execute(request);
 		model.addAttribute(StringUtils.MODEL_NAME, response);
 		return "todo/dashboard";
