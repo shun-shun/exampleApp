@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import jp.ac.hcs.gondo.app.common.StringUtils;
-import jp.ac.hcs.gondo.app.request.TodoDetailRequest;
+import jp.ac.hcs.gondo.app.request.TodoDetailGetRequest;
 import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.domain.service.FindService;
 
@@ -20,7 +20,7 @@ public class TodoDetailController {
 	private Map<String, FindService> service;
 	
 	@GetMapping("/detail")
-	public String getDetail(@Validated TodoDetailRequest request, Model model) {
+	public String getDetail(@Validated TodoDetailGetRequest request, Model model) {
 		Response response = service.get("TodoFindService").execute(request);
 		model.addAttribute(StringUtils.MODEL_NAME, response);
 		return "todo/detail";
