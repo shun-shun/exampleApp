@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<div th:replace="~{common :: common-script}"></div>
+<div th:replace="~{common :: common-head}"></div>
+
+<body>
+
+	<div th:replace="~{common :: common-nav}"></div>
+	<div class="container-fluid header-up">
+		<div class="row">
+			<nav th:replace="~{common :: common-sidebar}"></nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<h3>TODO登録</h3>
+				<div class="row justify-content-md-center">
+					<div class="col-lg-10">
+						<div class="alert alert-warning" role="alert" th:if="${message}"
+							th:text="${message}"></div>
+						<div class="alert alert-danger" role="alert"
+							th:if="${errorMessage}" th:text="${errorMessage}"></div>
+						<div class="content-box">
+							<form method="post" class="needs-validation" th:action="@{/create}" th:object="${request}">
+							
+							<div class="mb-3">
+								<label for="title" class="form-label">タスク名*</label>
+								<div class="form-group input-box position-relative">
+									<input type="text" class="form-control" name="title" placeholder="タスク内容" th:value="*{title}" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'">
+									<div class="invalid-tooltip" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+								</div>
+								<div id="titleHelp" class="form-text">タスクの内容を具体的に記載してください</div>
+							</div>
+							
+							<div class="mb-3">
+								<label for="date" class="form-label">期限日*</label>
+								<div class="form-group input-box position-relative">
+									<input type="date" id="date" class="form-control" name="date" placeholder="タスク内容" th:value="*{date}" th:classappend="${#fields.hasErrors('date')} ? 'is-invalid'">
+									<div class="invalid-tooltip" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+								</div>
+								<div id="dateHelp" class="form-text">タスクの期日を入力してください</div>
+							</div>
+								<div>
+									<span class="d-flex justify-content-end">
+										<button id="submit" type="submit" class="btn btn-warning">追加</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

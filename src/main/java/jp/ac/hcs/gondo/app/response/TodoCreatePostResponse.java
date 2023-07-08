@@ -3,7 +3,7 @@ package jp.ac.hcs.gondo.app.response;
 import lombok.Data;
 
 @Data
-public class TodoUpdateResponse extends Response {
+public class TodoCreatePostResponse extends Response {
 
 	private String reponseCode;
 	

@@ -5,11 +5,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import jp.ac.hcs.gondo.app.request.Request;
+import jp.ac.hcs.gondo.app.request.TodoCreatePostRequest;
 import jp.ac.hcs.gondo.app.response.Response;
 import jp.ac.hcs.gondo.domain.service.FindService;
 
@@ -22,14 +22,15 @@ public class TodoCreateController {
 	private static final String MODEL_NAME = "response";
 	
 	@GetMapping("/create")
-	public String getApply() {
-		return "apply/input";
+	public String getApply(TodoCreatePostRequest request, Model model) {
+		model.addAttribute("request", request);
+		return "todo/create";
 	}
 	
 	@PostMapping("/create")
-	public String postApply(@ModelAttribute Request request, Model model) {
+	public String postApply(@Validated TodoCreatePostRequest request, Model model) {
 		Response response = service.get("TodoCreateService").execute(request);
 		model.addAttribute(MODEL_NAME, response);
-		return "index";
+		return "redirect:/search";
 	}
 }
