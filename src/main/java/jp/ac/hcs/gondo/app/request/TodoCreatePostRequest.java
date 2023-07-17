@@ -9,10 +9,11 @@ import lombok.Data;
 @Data
 public class TodoCreatePostRequest extends Request{
 
-	@NotBlank
+	@NotBlank(message = "必須項目です")
 	@Size(min = 1, max = 100)
 	private String title;
 	
+	@NotBlank(message = "必須項目です")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String date;
 }

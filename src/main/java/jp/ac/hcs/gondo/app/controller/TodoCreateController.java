@@ -23,7 +23,7 @@ public class TodoCreateController {
 	
 	@GetMapping("/create")
 	public String getApply(TodoCreatePostRequest request, Model model) {
-		model.addAttribute("request", request);
+		model.addAttribute("todoCreatePostRequest", request);
 		return "todo/create";
 	}
 	
